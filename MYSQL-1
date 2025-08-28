@@ -1,0 +1,33 @@
+CREATE DATABASE e_commerce_sales_analysis;
+USE e_commerce_sales_analysis;
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    product VARCHAR(50),
+    category VARCHAR(50),
+    order_date DATE,
+    quantity INT,
+    price DECIMAL(10,2)
+);
+INSERT INTO orders VALUES
+(1, 101, 'Laptop', 'Electronics', '2024-01-05', 1, 55000),
+(2, 102, 'Headphones', 'Electronics', '2024-01-10', 2, 2000),
+(3, 103, 'Shoes', 'Fashion', '2024-02-02', 1, 2500),
+(4, 101, 'Mobile', 'Electronics', '2024-02-15', 1, 20000),
+(5, 104, 'T-shirt', 'Fashion', '2024-03-01', 3, 800);
+
+-- Top 5 best-selling products
+SELECT product, SUM(quantity*price) AS revenue
+FROM orders
+GROUP BY product
+ORDER BY revenue DESC
+LIMIT 5;
+
+-- Monthly revenue
+SELECT DATE_FORMAT(order_date, '%Y-%m') AS month, SUM(quantity*price) AS revenue
+FROM orders
+GROUP BY month
+ORDER BY month;
+SELECT * FROM orders;
+
