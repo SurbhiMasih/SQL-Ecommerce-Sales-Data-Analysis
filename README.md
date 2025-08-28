@@ -63,7 +63,7 @@ SELECT * FROM orders;
 
 🛠️ Tools & Technologies:
 
-SQL (MySQL / MariaDB / PostgreSQL) – Querying and analysis
+SQL (MySQL) – Querying and analysis
 
 Database Schema Design – Orders table for sales records
 
